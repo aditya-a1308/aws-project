@@ -20,7 +20,9 @@ phases:
 
   post_build:
     commands:
-      - echo Uploading frontend build to S3...
+      - pwd
+      - ls
+      - ls dist
       - aws s3 sync dist/ s3://$S3_BUCKET --delete
 
 artifacts:
