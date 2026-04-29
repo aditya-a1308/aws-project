@@ -1,9 +1,5 @@
 version: 0.2
 
-env:
-  variables:
-    S3_BUCKET: aditya-buildright-frontend-bucket-12345
-
 phases:
   install:
     runtime-versions:
@@ -16,14 +12,12 @@ phases:
   build:
     commands:
       - echo Building React app...
+      - echo "Using API URL: $VITE_API_URL"
       - npm run build
 
   post_build:
     commands:
-      - pwd
-      - ls
-      - ls dist
-      - aws s3 sync dist/ s3://$S3_BUCKET --delete
+      - aws s3 sync dist/ s3://$FRONTEND_BUCKET --delete
 
 artifacts:
   files:
