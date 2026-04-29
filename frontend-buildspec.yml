@@ -12,7 +12,6 @@ phases:
   build:
     commands:
       - echo Building React app...
-      - echo "Using API URL: $VITE_API_URL"
       - npm run build
 
   post_build:

@@ -16,14 +16,11 @@ phases:
   post_build:
     commands:
       - echo Backend build completed
-      - |
-        cat > scripts/runtime.env <<EOF
-        DB_URL=jdbc:mysql://${DB_HOST}/${DB_NAME}
-        DB_USERNAME=${DB_USERNAME}
-        DB_PASSWORD=${DB_PASSWORD}
-        AWS_REGION=${AWS_REGION}
-        BACKEND_FILES_BUCKET=${BACKEND_FILES_BUCKET}
-        EOF
+      - echo "DB_URL=jdbc:mysql://${DB_HOST}/${DB_NAME}" > scripts/runtime.env
+      - echo "DB_USERNAME=${DB_USERNAME}" >> scripts/runtime.env
+      - echo "DB_PASSWORD=${DB_PASSWORD}" >> scripts/runtime.env
+      - echo "AWS_REGION=${AWS_REGION}" >> scripts/runtime.env
+      - echo "BACKEND_FILES_BUCKET=${BACKEND_FILES_BUCKET}" >> scripts/runtime.env
 
 artifacts:
   files:
